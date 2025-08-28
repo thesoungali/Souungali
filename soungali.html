@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Soungali — Accueil</title>
+  <meta name="description" content="Site officiel de Soungali — actualités, projets, fichiers, contact." />
+  <!-- Tailwind via CDN (pour prototype rapide) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* petites personnalisations */
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-slate-100 min-h-screen">
+  <header class="sticky top-0 z-50 glass border-b border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center font-bold">SD</div>
+        <div>
+          <div class="font-semibold">Soungali</div>
+          <div class="text-xs text-slate-300">@thesoungali</div>
+        </div>
+      </a>
+      <nav class="hidden md:flex gap-4 items-center">
+        <a href="#features" class="hover:underline">Fonctionnalités</a>
+        <a href="#blog" class="hover:underline">Blog</a>
+        <a href="#files" class="hover:underline">Fichiers</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+        <button id="btn-admin" class="ml-2 px-3 py-1 border rounded">Admin</button>
+      </nav>
+      <div class="md:hidden">
+        <button id="btn-menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Hero -->
+    <section class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-4xl font-extrabold">Soungali — Technologie & Impact</h1>
+        <p class="mt-4 text-slate-300">Projets, articles, fichiers à télécharger et moyens de contacter l'équipe. Construit pour grandir.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#files" class="px-4 py-2 bg-indigo-600 rounded shadow">Télécharger</a>
+          <a href="#contact" class="px-4 py-2 border rounded">Contact</a>
+        </div>
+        <div class="mt-6">
+          <input id="search" type="search" placeholder="Recherche rapide..." class="w-full md:w-3/4 px-3 py-2 rounded bg-slate-800 border border-slate-700" />
+        </div>
+      </div>
+      <div class="bg-slate-800 p-6 rounded-lg">
+        <h3 class="font-semibold">Dernières actualités</h3>
+        <ul id="news" class="mt-4 space-y-3 text-slate-300">
+          <!-- éléments générés par JS -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- Fonctionnalités -->
+    <section id="features" class="mt-12">
+      <h2 class="text-2xl font-bold">Fonctionnalités principales</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-6">
+        <div class="p-4 bg-slate-800 rounded"> 
+          <h4 class="font-semibold">Blog statique</h4>
+          <p class="text-sm text-slate-300 mt-2">Publiez des articles en markdown (fichiers static) et listez-les automatiquement.</p>
+        </div>
+        <div class="p-4 bg-slate-800 rounded"> 
+          <h4 class="font-semibold">Partage de fichiers</h4>
+          <p class="text-sm text-slate-300 mt-2">Section pour mettre des fichiers téléchargeables (PDF, ZIP). Hébergement recommandé via GitHub, Cloudflare Pages, ou un bucket S3.</p>
+        </div>
+        <div class="p-4 bg-slate-800 rounded"> 
+          <h4 class="font-semibold">Contact & Formulaire</h4>
+          <p class="text-sm text-slate-300 mt-2">Formulaire prêt à être connecté à Formspree ou Netlify forms pour recevoir des messages par email.</p>
+        </div>
+        <div class="p-4 bg-slate-800 rounded"> 
+          <h4 class="font-semibold">Zone admin (prototype)</h4>
+          <p class="text-sm text-slate-300 mt-2">Interface d'administration pour ajouter des actualités et gérer les fichiers (nécessite backend pour être sécurisé).</p>
+        </div>
+        <div class="p-4 bg-slate-800 rounded"> 
+          <h4 class="font-semibold">Recherche rapide</h4>
+          <p class="text-sm text-slate-300 mt-2">Recherche côté client pour trouver articles et fichiers.</p>
+        </div>
+        <div class="p-4 bg-slate-800 rounded"> 
+          <h4 class="font-semibold">Responsive & Accessible</h4>
+          <p class="text-sm text-slate-300 mt-2">Conçu mobile-first, contraste accessible et navigation clavier.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="mt-12">
+      <h2 class="text-2xl font-bold">Blog</h2>
+      <div id="posts" class="mt-6 grid md:grid-cols-2 gap-6">
+        <!-- posts générés par JS -->
+      </div>
+    </section>
+
+    <!-- Fichiers -->
+    <section id="files" class="mt-12">
+      <h2 class="text-2xl font-bold">Fichiers & Téléchargements</h2>
+      <p class="text-slate-300 mt-2">Exemples de fichiers hébergés (remplacez les URLs par vos fichiers réels).</p>
+      <div class="mt-4 grid md:grid-cols-3 gap-4" id="file-list">
+        <!-- fichiers générés par JS -->
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mt-12 bg-slate-900 p-6 rounded">
+      <h2 class="text-2xl font-bold">Contact</h2>
+      <form id="contact-form" class="mt-4 grid md:grid-cols-2 gap-4" action="https://formspree.io/f/your-form-id" method="POST">
+        <input name="name" required placeholder="Votre nom" class="px-3 py-2 rounded bg-slate-800 border border-slate-700" />
+        <input name="email" type="email" required placeholder="Votre email" class="px-3 py-2 rounded bg-slate-800 border border-slate-700" />
+        <textarea name="message" required placeholder="Message" class="col-span-2 px-3 py-2 rounded bg-slate-800 border border-slate-700"></textarea>
+        <div class="col-span-2 flex gap-3 justify-end">
+          <button type="submit" class="px-4 py-2 bg-green-600 rounded">Envoyer</button>
+          <button type="button" id="btn-clear" class="px-4 py-2 border rounded">Effacer</button>
+        </div>
+      </form>
+      <p class="text-slate-400 text-sm mt-3">Remplacez `https://formspree.io/f/your-form-id` par l'URL fournie par Formspree ou Netlify.</p>
+    </section>
+
+  </main>
+
+  <footer class="mt-12 py-6 border-t border-slate-800 text-center text-slate-400">
+    © Soungali — <span id="year"></span>. Développé pour démonstration.
+  </footer>
+
+  <!-- Admin modal (prototype) -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center bg-black/60">
+    <div class="bg-slate-900 rounded p-6 w-11/12 md:w-1/2">
+      <h3 class="font-semibold">Admin — Prototype</h3>
+      <p class="text-sm text-slate-300 mt-2">Tapez le code admin pour accéder (ceci est un prototype: implémentez un vrai backend pour la production).</p>
+      <input id="admin-code" placeholder="Code admin" class="w-full mt-3 px-3 py-2 rounded bg-slate-800 border border-slate-700" />
+      <div class="mt-4 flex justify-end gap-3">
+        <button id="btn-admin-close" class="px-3 py-1 border rounded">Fermer</button>
+        <button id="btn-admin-enter" class="px-3 py-1 bg-indigo-600 rounded">Entrer</button>
+      </div>
+      <div id="admin-area" class="mt-4 hidden">
+        <h4 class="font-semibold">Ajouter une actualité</h4>
+        <input id="news-title" placeholder="Titre" class="w-full mt-2 px-3 py-2 rounded bg-slate-800 border border-slate-700" />
+        <textarea id="news-body" placeholder="Texte" class="w-full mt-2 px-3 py-2 rounded bg-slate-800 border border-slate-700"></textarea>
+        <div class="mt-3 flex justify-end">
+          <button id="btn-add-news" class="px-3 py-1 bg-green-600 rounded">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // données d'exemple (à remplacer par fetch depuis un backend ou fichiers JSON)
+    const sampleNews = [
+      {id:1, title: 'Lancement du site', body: 'Bienvenue sur le nouveau site Soungali.'},
+      {id:2, title: 'Projet tech', body: 'Nouveau projet: diPay — en développement.'}
+    ];
+    const samplePosts = [
+      {id:1, title:'Comment démarrer en codage', excerpt:'Conseils pour débuter...', date:'2025-08-01'},
+      {id:2, title:'Créer un projet open-source', excerpt:'Publiez votre travail...', date:'2025-07-18'}
+    ];
+    const sampleFiles = [
+      {id:1, name:'Presentation.zip', url:'#'},
+      {id:2, name:'Brochure.pdf', url:'#'}
+    ];
+
+    // render
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const newsEl = document.getElementById('news');
+    sampleNews.forEach(n => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${n.title}</strong><div class=\"text-sm text-slate-400\">${n.body}</div>`;
+      newsEl.appendChild(li);
+    });
+    const postsEl = document.getElementById('posts');
+    samplePosts.forEach(p => {
+      const card = document.createElement('article');
+      card.className = 'p-4 bg-slate-800 rounded';
+      card.innerHTML = `<h3 class=\"font-semibold\">${p.title}</h3><div class=\"text-sm text-slate-400\">${p.excerpt}</div><div class=\"text-xs text-slate-500 mt-2\">${p.date}</div>`;
+      postsEl.appendChild(card);
+    });
+    const filesEl = document.getElementById('file-list');
+    sampleFiles.forEach(f => {
+      const c = document.createElement('div');
+      c.className = 'p-3 bg-slate-800 rounded flex justify-between items-center';
+      c.innerHTML = `<div><div class=\"font-medium\">${f.name}</div><div class=\"text-xs text-slate-400\">Taille: — | Type: —</div></div><a class=\"px-3 py-1 border rounded\" href=\"${f.url}\" download>Télécharger</a>`;
+      filesEl.appendChild(c);
+    });
+
+    // recherche simple
+    document.getElementById('search').addEventListener('input', e => {
+      const q = e.target.value.toLowerCase();
+      // filtrer posts et news
+      Array.from(document.querySelectorAll('#posts article')).forEach(a => {
+        a.style.display = a.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+
+    // admin modal
+    const modal = document.getElementById('modal');
+    document.getElementById('btn-admin').addEventListener('click', () => modal.classList.remove('hidden'));
+    document.getElementById('btn-admin-close').addEventListener('click', () => modal.classList.add('hidden'));
+    document.getElementById('btn-admin-enter').addEventListener('click', () => {
+      const code = document.getElementById('admin-code').value.trim();
+      if (code === 'diAdmin2025') { // prototype — changez ceci
+        document.getElementById('admin-area').classList.remove('hidden');
+      } else alert('Code invalide (prototype).');
+    });
+    document.getElementById('btn-add-news').addEventListener('click', () => {
+      const t = document.getElementById('news-title').value.trim();
+      const b = document.getElementById('news-body').value.trim();
+      if (!t || !b) return alert('Remplissez titre et texte.');
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${t}</strong><div class=\"text-sm text-slate-400\">${b}</div>`;
+      newsEl.prepend(li);
+      document.getElementById('news-title').value = '';
+      document.getElementById('news-body').value = '';
+    });
+
+    // menu toggle mobile
+    document.getElementById('btn-menu').addEventListener('click', () => {
+      const nav = document.querySelector('header nav');
+      nav.classList.toggle('hidden');
+    });
+
+    // clear contact
+    document.getElementById('btn-clear').addEventListener('click', () => document.getElementById('contact-form').reset());
+  </script>
+</body>
+</html>
